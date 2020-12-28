@@ -1,0 +1,55 @@
+{
+  "name": "easy-peasy-demo",
+  "private": true,
+  "scripts": {
+    "build": "poi",
+    "dev": "poi -s",
+    "test:unit": "poi test:karma",
+    "lint": "tslint --project .",
+    "prepublishOnly": "npm run build"
+  },
+  "devDependencies": {
+    "@magicdawn/prettier-config": "latest",
+    "@poi/plugin-karma": "^13.0.0",
+    "@poi/plugin-typescript": "^12.0.1",
+    "@types/jest": "^26.0.19",
+    "@types/poi": "^12.5.0",
+    "@types/react": "^17.0.0",
+    "@types/react-dom": "^17.0.0",
+    "husky": "latest",
+    "lint-staged": "latest",
+    "poi": "^12.4.2",
+    "prettier": "latest",
+    "tsconfig-paths-webpack-plugin": "^3.3.0",
+    "typescript": "^4",
+    "@magicdawn/eslint-config": "latest",
+    "eslint": "^6.8.0"
+  },
+  "dependencies": {
+    "easy-peasy": "^4.0.1",
+    "react": "^17.0.1",
+    "react-dom": "^17.0.1"
+  },
+  "husky": {
+    "hooks": {
+      "pre-commit": "lint-staged"
+    }
+  },
+  "lint-staged": {
+    "*.{js,less,vue}": [
+      "prettier --write"
+    ]
+  },
+  "browserslist": {
+    "production": [
+      ">0.2%",
+      "not dead",
+      "not op_mini all"
+    ],
+    "development": [
+      "last 1 chrome version",
+      "last 1 firefox version",
+      "last 1 safari version"
+    ]
+  }
+}
