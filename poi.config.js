@@ -7,7 +7,7 @@ module.exports = {
       resolve: '@poi/plugin-typescript',
       options: {
         lintOnSave: false,
-        babel: true,
+        babel: false,
       },
     },
   ],
@@ -17,10 +17,12 @@ module.exports = {
     config.resolve.plugins.unshift(
       new TsconfigPathsPlugin({configFile: __dirname + '/tsconfig.json'})
     )
-    config.resolve.alias['easy-peasy'] = require.resolve('easy-peasy/src/index.js')
+    // config.resolve.alias['easy-peasy'] = require.resolve('easy-peasy/src/index.js')
   },
 
   babel: {
-    transpileModules: [/easy-peasy/],
+    transpileModules: [
+      // /easy-peasy/
+    ],
   },
 }

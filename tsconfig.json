@@ -1,6 +1,10 @@
 {
   "compilerOptions": {
     "baseUrl": "src",
+    "paths": {
+      "@store": ["store.ts"],
+      "@/*": ["*"]
+    },
     "target": "es2019",
     "moduleResolution": "node",
     "allowSyntheticDefaultImports": true,

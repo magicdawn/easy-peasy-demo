@@ -2,7 +2,7 @@ import './assets/css/style.css'
 import React from 'react'
 import {render} from 'react-dom'
 import {action, createStore, StoreProvider} from 'easy-peasy'
-import store, {useStoreState, useStoreActions} from 'store'
+import store, {useStoreState, useStoreActions} from '@store'
 
 function App() {
   return (
@@ -14,14 +14,19 @@ function App() {
 }
 
 function Count() {
-  const num = useStoreState(state => {
+  const num = useStoreState((state) => {
     return state.count.num
   })
-  const increase = useStoreActions(actions => actions.count.increase)
+  const {increase, reset} = useStoreActions((actions) => {
+    return {
+      increase: actions.count.increase,
+      reset: actions.global.reset,
+    }
+  })
 
   return (
     <>
-      <h1>Count</h1>
+      <h1>Count 123</h1>
       <p>current count: {num}</p>
       <button
         onClick={() => {
@@ -36,6 +41,13 @@ function Count() {
         }}
       >
         -
+      </button>
+      <button
+        onClick={() => {
+          reset()
+        }}
+      >
+        reset
       </button>
       <hr />
     </>
