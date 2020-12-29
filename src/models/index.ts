@@ -1,2 +1,3 @@
 import count from './count'
-export {count}
+import global from './global'
+export {count, global}
