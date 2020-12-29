@@ -5,10 +5,12 @@ interface CountModel {
   increase: Action<CountModel, number | undefined | void>
 }
 
-export const count: CountModel = {
+const count: CountModel = {
   num: 0,
 
   increase: action((state, payload = 1) => {
     // state.num += payload
   }),
 }
+
+export default count
