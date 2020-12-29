@@ -15,7 +15,7 @@
     "isolatedModules": true,
     "noEmit": true,
     "strict": false,
-    "module": "esnext"
+    "module": "commonjs"
   },
   "include": ["src"]
 }

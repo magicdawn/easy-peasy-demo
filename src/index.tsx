@@ -17,8 +17,7 @@ function Count() {
   const num = useStoreState(state => {
     return state.count.num
   })
-  // const increase = useStoreActions(actions => actions.count.increase)
-  const increase = (num?: number) => {}
+  const increase = useStoreActions(actions => actions.count.increase)
 
   return (
     <>

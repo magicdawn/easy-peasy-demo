@@ -7,7 +7,7 @@ module.exports = {
       resolve: '@poi/plugin-typescript',
       options: {
         lintOnSave: false,
-        babel: false,
+        babel: true,
       },
     },
   ],
