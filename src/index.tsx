@@ -1,8 +1,8 @@
 import './assets/css/style.css'
-import React from 'react'
+import React, {useMemo} from 'react'
 import {render} from 'react-dom'
-import {action, createStore, StoreProvider} from 'easy-peasy'
-import store, {useStoreState, useStoreActions} from '@store'
+import {StoreProvider} from 'easy-peasy'
+import store, {useEasy} from '@store'
 
 function App() {
   return (
@@ -14,37 +14,30 @@ function App() {
 }
 
 function Count() {
-  const num = useStoreState((state) => {
-    return state.count.num
-  })
-  const {increase, reset} = useStoreActions((actions) => {
-    return {
-      increase: actions.count.increase,
-      reset: actions.global.reset,
-    }
-  })
+  const count = useEasy('count')
+  const gbl = useEasy('global')
 
   return (
     <>
       <h1>Count 123</h1>
-      <p>current count: {num}</p>
+      <p>current count: {count.num}</p>
       <button
         onClick={() => {
-          increase()
+          count.increase()
         }}
       >
         +
       </button>
       <button
         onClick={() => {
-          increase(-1)
+          count.increase(-1)
         }}
       >
         -
       </button>
       <button
         onClick={() => {
-          reset()
+          gbl.reset()
         }}
       >
         reset

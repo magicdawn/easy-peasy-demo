@@ -1,7 +1,9 @@
 import {createStore, createTypedHooks} from 'easy-peasy'
-import * as models from './models'
 import {cloneDeep} from 'lodash'
+import {useMemo} from 'react'
+import shallowEqual from 'shallowequal'
 
+import * as models from './models'
 const store = createStore(cloneDeep(models))
 export default store
 
@@ -18,3 +20,14 @@ if (process.env.NODE_ENV === 'development') {
 export type StoreModel = typeof models
 const {useStoreActions, useStoreState, useStoreDispatch, useStore} = createTypedHooks<StoreModel>()
 export {useStoreActions, useStoreState, useStoreDispatch, useStore, store}
+
+export const useEasy = <NSP extends keyof StoreModel>(nsp: NSP) => {
+  const state = useStoreState((state) => state[nsp], shallowEqual)
+  const actions = useStoreActions((actions) => actions[nsp])
+  return useMemo(() => {
+    return {
+      ...state,
+      ...actions,
+    }
+  }, [state, actions])
+}
