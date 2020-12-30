@@ -19,7 +19,8 @@
     "isolatedModules": true,
     "noEmit": true,
     "strict": false,
-    "module": "commonjs"
+    "module": "commonjs",
+    "experimentalDecorators": true
   },
   "include": ["src"]
 }
